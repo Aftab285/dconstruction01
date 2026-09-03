@@ -1,0 +1,20 @@
+---
+import Brand from './Brand.astro';
+---
+<header class="site-header" data-header>
+  <div class="nav-wrap">
+    <Brand />
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-menu-button><span></span><span></span></button>
+    <nav aria-label="Main navigation" data-menu>
+      <a class="active" href="/">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a class="button nav-cta" href="#contact">Request a quote <span>↗</span></a>
+    </nav>
+  </div>
+</header>
+<script>
+  const header = document.querySelector('[data-header]');
+  const button = document.querySelector('[data-menu-button]');
+  const menu = document.querySelector('[data-menu]');
+  addEventListener('scroll', () => header?.classList.toggle('scrolled', scrollY > 24), { passive: true });
+  button?.addEventListener('click', () => { const open = menu?.classList.toggle('open'); button.setAttribute('aria-expanded', String(open)); });
+</script>
